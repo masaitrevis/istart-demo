@@ -1,0 +1,1355 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iSTART Education - Igniting Young Minds Through STEM</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --accent-color: #06b6d4;
+            --dark-bg: #1e1b4b;
+            --light-bg: #f8fafc;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #333 !important;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-donate-nav {
+            background: var(--gradient-2);
+            border: none;
+            color: white !important;
+            padding: 8px 24px !important;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-donate-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            top: 70%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            bottom: 20%;
+            left: 20%;
+            width: 60px;
+            height: 60px;
+            background: white;
+            transform: rotate(45deg);
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-cta {
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-hero-primary {
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            border: none;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .hero-image-container {
+            position: relative;
+            z-index: 2;
+            animation: fadeInRight 1s ease 0.6s both;
+        }
+
+        .hero-image {
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-bg);
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            background: white;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .program-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .icon-gamified { background: var(--gradient-2); }
+        .icon-robotics { background: var(--gradient-1); }
+        .icon-arduino { background: var(--gradient-3); }
+        .icon-stem { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        .program-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .program-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .program-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .program-features li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .program-features li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .btn-program {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-program:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Gamified Learning Section */
+        .gamified-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .gamified-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--dark-bg);
+        }
+
+        .gamified-content p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .gamified-image {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: transform 0.5s ease;
+        }
+
+        .gamified-image:hover {
+            transform: scale(1.02) rotate(2deg);
+        }
+
+        /* Robotics Section */
+        .robotics-section {
+            background: var(--dark-bg);
+            color: white;
+        }
+
+        .robotics-section .section-title {
+            color: white;
+        }
+
+        .robotics-section .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .robotics-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.4s ease;
+        }
+
+        .robotics-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .robotics-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .robotics-card h4 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .robotics-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        /* Arduino Section */
+        .arduino-section {
+            background: white;
+        }
+
+        .arduino-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .arduino-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arduino-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-3);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .arduino-item:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.15);
+        }
+
+        .arduino-item:hover::after {
+            transform: scaleX(1);
+        }
+
+        .arduino-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .arduino-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .arduino-item h4 {
+            margin-bottom: 10px;
+            color: var(--dark-bg);
+        }
+
+        .arduino-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* STEM Overview Section */
+        .stem-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stem-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stem-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .stem-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .stem-letter {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stem-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .stem-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Impact Stats */
+        .stats-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Donate Section */
+        .donate-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .donate-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .donate-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .donate-text {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .donate-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-donate-large {
+            background: white;
+            color: var(--secondary-color);
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-donate-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            color: var(--secondary-color);
+        }
+
+        .btn-donate-outline {
+            background: transparent;
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 3px solid white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-donate-outline:hover {
+            background: white;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-image-container {
+                margin-top: 50px;
+            }
+            
+            .stem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stem-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .donate-title {
+                font-size: 2rem;
+            }
+            
+            .btn-hero-primary, .btn-hero-secondary {
+                display: block;
+                margin: 10px 0;
+                width: 100%;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-rocket-takeoff-fill me-2"></i>iSTART
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gamified">Gamified Learning</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#robotics">Robotics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#arduino">Arduino</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stem">STEM</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="nav-link btn-donate-nav" href="#donate">
+                            <i class="bi bi-heart-fill me-1"></i> Donate
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Igniting Young Minds Through STEM Innovation</h1>
+                    <p class="hero-subtitle">iSTART Education empowers the next generation of creators, thinkers, and innovators through hands-on learning experiences in science, technology, engineering, and mathematics.</p>
+                    <div class="hero-cta">
+                        <a href="#programs" class="btn btn-hero-primary">Explore Programs</a>
+                        <a href="#donate" class="btn btn-hero-secondary">Support Our Mission</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image-container">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop" 
+                         alt="Children learning STEM" 
+                         class="img-fluid hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Overview Section -->
+    <section id="programs" class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Programs</span>
+                <h2 class="section-title">Comprehensive STEM Education</h2>
+                <p class="section-subtitle">From gamified learning to advanced robotics, we offer diverse programs designed to engage students at every level.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <div class="program-icon icon-gamified">
+                            <i class="bi bi-controller"></i>
+                        </div>
+                        <h3 class="program-title">Gamified Learning</h3>
+                        <p class="program-description">Interactive games and challenges that make learning math and science fun and engaging for young minds.</p>
+                        <ul class="program-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Ages 5-12</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Interactive Apps</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Progress Tracking</li>
+                        </ul>
+                        <a href="#gamified" class="btn btn-program">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <div class="program-icon icon-robotics">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <h3 class="program-title">Robotics Lab</h3>
+                        <p class="program-description">Build and program robots using cutting-edge technology. From basic bots to advanced AI-driven machines.</p>
+                        <ul class="program-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Ages 10-18</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Competition Teams</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Industry Mentors</li>
+                        </ul>
+                        <a href="#robotics" class="btn btn-program">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <div class="program-icon icon-arduino">
+                            <i class="bi bi-cpu-fill"></i>
+                        </div>
+                        <h3 class="program-title">Arduino Projects</h3>
+                        <p class="program-description">Hands-on electronics and coding with Arduino microcontrollers. Create real-world interactive devices.</p>
+                        <ul class="program-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Ages 12+</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Circuit Design</li>
+                            <li><i class="bi bi-check-circle-fill"></i> IoT Projects</li>
+                        </ul>
+                        <a href="#arduino" class="btn btn-program">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <div class="program-icon icon-stem">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+                        <h3 class="program-title">STEM Discovery</h3>
+                        <p class="program-description">Comprehensive curriculum covering all STEM fields with interdisciplinary projects and real-world applications.</p>
+                        <ul class="program-features">
+                            <li><i class="bi bi-check-circle-fill"></i> All Ages</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Lab Experiments</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Research Skills</li>
+                        </ul>
+                        <a href="#stem" class="btn btn-program">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gamified Learning Section -->
+    <section id="gamified" class="gamified-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop" 
+                         alt="Kids learning with tablets" 
+                         class="img-fluid gamified-image">
+                </div>
+                <div class="col-lg-6 gamified-content">
+                    <span class="section-tag">Interactive Education</span>
+                    <h2>Learning Through Play</h2>
+                    <p>Our gamified learning platform transforms traditional education into an exciting adventure. Students earn badges, unlock achievements, and progress through levels while mastering core STEM concepts.</p>
+                    
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon">
+                                <i class="bi bi-trophy-fill"></i>
+                            </div>
+                            <span>Achievement-based progression system that motivates continuous learning</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <span>Collaborative challenges and team-based problem solving activities</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <span>Real-time analytics for parents and teachers to track improvement</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">
+                                <i class="bi bi-palette-fill"></i>
+                            </div>
+                            <span>Creative customization options that let kids personalize their learning journey</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-primary btn-lg rounded-pill mt-3" style="background: var(--gradient-2); border: none;">
+                        Try Demo Lesson <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Robotics Section -->
+    <section id="robotics" class="robotics-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(255,255,255,0.2); color: white;">Future Engineers</span>
+                <h2 class="section-title">Robotics & Automation</h2>
+                <p class="section-subtitle">Building the robots of tomorrow today. Our robotics program takes students from basic mechanics to advanced programming.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="robotics-card">
+                        <div class="robotics-icon">
+                            <i class="bi bi-gear-wide-connected"></i>
+                        </div>
+                        <h4>Mechanical Design</h4>
+                        <p>Learn engineering principles through hands-on construction. Students design, build, and test mechanical systems using professional-grade components.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="robotics-card">
+                        <div class="robotics-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                        <h4>Coding & Logic</h4>
+                        <p>Program robots using Python, C++, and visual programming languages. Develop algorithmic thinking and problem-solving skills essential for tech careers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="robotics-card">
+                        <div class="robotics-icon">
+                            <i class="bi bi-eye-fill"></i>
+                        </div>
+                        <h4>AI & Vision</h4>
+                        <p>Advanced tracks explore machine learning, computer vision, and autonomous navigation. Prepare for the future of robotics and AI integration.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a782?w=1200&h=500&fit=crop" 
+                         alt="Students working on robotics" 
+                         class="img-fluid rounded-4 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arduino Section -->
+    <section id="arduino" class="arduino-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Electronics & Coding</span>
+                <h2 class="section-title">Arduino Innovation Lab</h2>
+                <p class="section-subtitle">From blinking LEDs to complex IoT systems, our Arduino curriculum bridges the gap between software and hardware.</p>
+            </div>
+            
+            <div class="arduino-grid">
+                <div class="arduino-item">
+                    <span class="arduino-number">01</span>
+                    <i class="bi bi-lightning-charge-fill arduino-icon"></i>
+                    <h4>Electronics Basics</h4>
+                    <p>Understanding circuits, components, and electrical principles through safe, hands-on experimentation.</p>
+                </div>
+                
+                <div class="arduino-item">
+                    <span class="arduino-number">02</span>
+                    <i class="bi bi-keyboard-fill arduino-icon"></i>
+                    <h4>Sensor Integration</h4>
+                    <p>Working with temperature, motion, light, and distance sensors to create interactive environments.</p>
+                </div>
+                
+                <div class="arduino-item">
+                    <span class="arduino-number">03</span>
+                    <i class="bi bi-wifi arduino-icon"></i>
+                    <h4>IoT & Connectivity</h4>
+                    <p>Connecting projects to the internet, creating smart devices and remote monitoring systems.</p>
+                </div>
+                
+                <div class="arduino-item">
+                    <span class="arduino-number">04</span>
+                    <i class="bi bi-tools arduino-icon"></i>
+                    <h4>Prototype Design</h4>
+                    <p>3D modeling, printing, and fabrication skills to create professional project enclosures.</p>
+                </div>
+            </div>
+            
+            <div class="row mt-5 align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="bg-light p-4 rounded-4">
+                        <h4 class="mb-3">Project Spotlight: Smart Greenhouse</h4>
+                        <p class="text-muted">Our advanced students recently built an automated greenhouse system using Arduino that monitors soil moisture, controls irrigation, and adjusts lighting based on plant needs—all controlled via a mobile app.</p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">View Student Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEM Overview Section -->
+    <section id="stem" class="stem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(255,255,255,0.2); color: white;">Holistic Approach</span>
+                <h2 class="section-title">The Complete STEM Experience</h2>
+                <p class="section-subtitle">We believe in the power of integrated learning. Our curriculum weaves together all four pillars of STEM education.</p>
+            </div>
+            
+            <div class="stem-grid">
+                <div class="stem-card">
+                    <span class="stem-letter">S</span>
+                    <h4>Science</h4>
+                    <p>Biology, Chemistry, Physics, and Environmental Science through experimental learning and the scientific method.</p>
+                </div>
+                <div class="stem-card">
+                    <span class="stem-letter">T</span>
+                    <h4>Technology</h4>
+                    <p>Coding, digital literacy, cybersecurity, and emerging tech including VR, AI, and blockchain fundamentals.</p>
+                </div>
+                <div class="stem-card">
+                    <span class="stem-letter">E</span>
+                    <h4>Engineering</h4>
+                    <p>Design thinking, prototyping, structural analysis, and systems engineering across multiple disciplines.</p>
+                </div>
+                <div class="stem-card">
+                    <span class="stem-letter">M</span>
+                    <h4>Mathematics</h4>
+                    <p>From foundational arithmetic to advanced calculus, taught through real-world applications and modeling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">5,000+</div>
+                        <div class="stat-label">Students Enrolled</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Expert Instructors</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Partner Schools</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="donate-section">
+        <div class="container">
+            <div class="donate-content">
+                <h2 class="donate-title">Support the Next Generation of Innovators</h2>
+                <p class="donate-text">Your contribution helps us provide scholarships, purchase equipment, and expand our programs to underserved communities. Every donation brings STEM education to life for a child.</p>
+                
+                <div class="donate-buttons">
+                    <a href="https://www.paypal.com/donate/?business=YOUR_PAYPAL_EMAIL&no_recurring=0&currency_code=USD" 
+                       target="_blank" 
+                       class="btn-donate-large">
+                        <i class="bi bi-paypal"></i> Donate with PayPal
+                    </a>
+                    <a href="#" class="btn-donate-outline">
+                        <i class="bi bi-heart-fill"></i> Other Ways to Give
+                    </a>
+                </div>
+                
+                <div class="mt-5">
+                    <p class="mb-3 opacity-75">Secure payments processed by PayPal. All donations are tax-deductible.</p>
+                    <div class="d-flex justify-content-center gap-4 flex-wrap">
+                        <span><i class="bi bi-shield-check me-2"></i>Secure</span>
+                        <span><i class="bi bi-check-circle me-2"></i>Tax Deductible</span>
+                        <span><i class="bi bi-arrow-repeat me-2"></i>Monthly Options</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <span class="footer-brand">iSTART Education</span>
+                    <p class="footer-text">Empowering young minds through innovative STEM education. Building the problem-solvers and innovators of tomorrow, today.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
+                    <h5>Programs</h5>
+                    <ul>
+                        <li><a href="#gamified">Gamified Learning</a></li>
+                        <li><a href="#robotics">Robotics</a></li>
+                        <li><a href="#arduino">Arduino</a></li>
+                        <li><a href="#stem">STEM Labs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Parent Guide</a></li>
+                        <li><a href="#">Educator Portal</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 footer-links">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><a href="mailto:hello@istart.edu">hello@istart.edu</a></li>
+                        <li><a href="tel:+1234567890">(123) 456-7890</a></li>
+                        <li><a href="#">Find a Location</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 iSTART Education. All rights reserved. | <a href="#" class="text-white-50">Privacy Policy</a> | <a href="#" class="text-white-50">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS for interactions -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>'''
+
